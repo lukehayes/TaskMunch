@@ -17,4 +17,13 @@ function File.exists(file)
     end
 end
 
+--- Check if a file doesn't exist.
+--
+-- @param file    string    The name of the file.
+--
+-- @return boolean    True if file doesn't exist, false otherwise.
+function File.not_exists(file)
+    return not File.exists(file)
+end
+
 return File
