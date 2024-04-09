@@ -1,12 +1,9 @@
-local colors = require('ansicolors')
 local Task = require('taskmunch.task')
-local cli = require('cli')
-local file = require('taskmunch.file')
+local CFG  = require('taskmunch.config')
 
 local task_str = arg[1]
 
---print(path.exists('main.lua'))
---print(not not path.exists('taskmunch.lua'))
+CFG:init()
 
 if task_str then
     t = Task:new(task_str)
