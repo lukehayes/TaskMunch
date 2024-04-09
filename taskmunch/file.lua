@@ -22,7 +22,7 @@ end
 -- @param file    string    The name of the file.
 --
 -- @return boolean    True if file doesn't exist, false otherwise.
-function File.not_exists(file)
+function File.not_exist(file)
     return not File.exists(file)
 end
 
