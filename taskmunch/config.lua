@@ -1,7 +1,8 @@
 local File = require('taskmunch.file')
 
 local Config = {
-    TODO_FILENAME = "taskmunch.txt"
+    TODO_FILENAME = "tm.txt",
+    NO_TASK_TEXT  = "There was no task to be added.",
 }
 Config.__index = Config
 
