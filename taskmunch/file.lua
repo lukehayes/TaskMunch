@@ -35,4 +35,16 @@ function File.not_exist(file)
     return not File.exists(file)
 end
 
+function File:writeTask(taskObj, task)
+    print(self.filename)
+    local fh = io.open(self.filename,'a')
+
+    fh:write(
+        taskObj.task .. " " ..
+        tostring(taskObj.done).. " " ..
+        taskObj.created_at .. "\n"
+    )
+
+    fh:close()
+end
 return File
