@@ -9,15 +9,23 @@ local task_str = arg[2]
 CFG:init()
 fh = File:new(CFG.TODO_FILENAME)
 
-if flag == 'p' then
+
+if flag == nil then
+    print('Run tm -h')
+
+elseif flag == '-p' then
     TM:print()
 
-elseif flag == 'xxx' then
+elseif flag == '-xxx' then
     fh:clear()
 
-elseif flag == 'a' then
-    t = Task:new(task_str)
-    fh:writeTask(t, task_str)
+elseif flag == '-a' then
+    if task_str == nil then
+        print(CFG.NO_TASK_TEXT)
+    else
+        t = Task:new(task_str)
+        fh:writeTask(t, task_str)
+    end
 
 else
     print(CFG.NO_TASK_TEXT)
