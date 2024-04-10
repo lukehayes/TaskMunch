@@ -8,6 +8,7 @@ function Task:new(task)
     t.task       = task
     t.done       = false
     t.created_at = tostring(os.time())
+    t.priority   = 1 -- Default priorty of a task is 1.
 
     return t
 end

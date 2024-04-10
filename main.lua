@@ -5,6 +5,7 @@ local TM   = require('taskmunch.taskmunch')
 
 local flag     = arg[1]
 local task_str = arg[2]
+local priority = arg[3]
 
 CFG:init()
 fh = File:new(CFG.TODO_FILENAME)
@@ -24,6 +25,11 @@ elseif flag == '-a' then
         print(CFG.NO_TASK_TEXT)
     else
         t = Task:new(task_str)
+
+        if priority then
+            t.priority = priority
+        end
+
         fh:writeTask(t, task_str)
     end
 

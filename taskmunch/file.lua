@@ -42,6 +42,7 @@ function File:writeTask(taskObj, task)
     fh:write(
         taskObj.task .. " " ..
         tostring(taskObj.done).. " " ..
+        tostring(taskObj.priority).. " " ..
         taskObj.created_at .. "\n"
     )
 
