@@ -9,7 +9,9 @@ function Taskmunch:print()
     local lines= io.lines(CFG.TODO_FILENAME)
     local task_count = self:task_count()
 
-    print("---- Tasks: ----")
+    print("----------------------------------------")
+    print("Tasks (".. task_count..")")
+    print("----------------------------------------")
     print()
 
     local count = 1
@@ -19,7 +21,9 @@ function Taskmunch:print()
     end
 
     print()
-    print("----  ----")
+    print("----------------------------------------")
+end
+
 --- Count the number of tasks inside the list.
 --
 -- @return number    The number of tasks.
