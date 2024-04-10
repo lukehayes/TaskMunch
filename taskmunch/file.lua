@@ -1,5 +1,14 @@
 local File = {}
 
+function File:new(filename)
+
+    local f = setmetatable({}, {__index = File})
+
+    f.filename = filename
+
+    return f
+end
+
 --- Check if a file exists.
 --
 -- @param file    string    The name of the file.
