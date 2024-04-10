@@ -47,4 +47,15 @@ function File:writeTask(taskObj, task)
 
     fh:close()
 end
+
+--- Completely clear the list of todos from file.
+--
+-- @return nil
+function File:clear()
+    local fh = io.open(self.filename, "w+")
+    fh:close()
+    print(self.filename .. " cleared!")
+end
+
+
 return File
