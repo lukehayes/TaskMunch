@@ -6,10 +6,18 @@ function Format.new_line()
     io.write("\n")
 end
 
+--- Print an app flag.
+--
+--  @param string    The option flag.
+--  @param string    The description of what the flag does.
 function Format.flag(flag, description)
     io.write(flag .. " : " .. description .." \n")
 end
 
+--- Print an option for a specific flag.
+--
+--  @param string    The option flag.
+--  @param string    The description of what the flag does.
 function Format.flagOption(arg_position, description, data_type, required, default_value)
 
     if required then
