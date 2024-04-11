@@ -2,7 +2,7 @@ local File = require('taskmunch.file')
 
 local Config = {
     TODO_FILENAME = "tm.txt",
-    NO_TASK_TEXT  = "No task available to be added.\n\nExample: taskmunch -a \"my cool task\" ",
+    NO_TASK_TEXT  = "Flag was not recognised.\n\nExample: taskmunch -a \"my cool task\" ",
     TASKMUNCH_VERSION = 0.1
 }
 Config.__index = Config
