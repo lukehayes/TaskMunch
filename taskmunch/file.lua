@@ -50,6 +50,21 @@ function File:writeTask(taskObj, task)
     fh:close()
 end
 
+--- Count the number of tasks inside the list.
+--
+-- @return number    The number of tasks.
+function File:task_count()
+
+    local fh = io.open(self.filename, "r")
+    local task_count = 0
+
+    while fh:read() do
+        task_count = task_count + 1
+    end
+
+    return task_count
+end
+
 --- Completely clear the list of todos from file.
 --
 -- @return nil

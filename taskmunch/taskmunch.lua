@@ -11,7 +11,7 @@ function Taskmunch:new()
     local tm = setmetatable({}, {__index = Taskmunch})
 
     tm.file = File:new(CFG.TODO_FILENAME)
-    tm.task_count = 0
+    tm.task_count = tm.file:task_count()
 
     return tm
 end
@@ -29,10 +29,9 @@ end
 function Taskmunch:print()
 
     local lines= io.lines(CFG.TODO_FILENAME)
-    local task_count = self.task_count
 
     print("----------------------------------------")
-    print("Tasks (".. task_count..")")
+    print("Tasks (".. self.task_count ..")")
     print("----------------------------------------")
     print()
 
@@ -58,6 +57,7 @@ function Taskmunch:add_task(task_str, priority)
         self.file:writeTask(t, task_str)
 
         self.task_count = self.task_count + 1
+        print("Count Update", self.task_count)
     end
 end
 
@@ -69,17 +69,7 @@ end
 --
 -- @return number    The number of tasks.
 function Taskmunch:task_count()
-
-    local lines= io.lines(CFG.TODO_FILENAME)
-    local count = 0
-
-    for line in lines do
-        count = count + 1
-    end
-
-    self.task_count = count
-
-    return self.task_count
+    return self.file:task_count()
 end
 
 return Taskmunch
