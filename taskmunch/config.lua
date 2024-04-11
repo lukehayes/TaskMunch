@@ -13,7 +13,7 @@ function Config:init()
         print("'" .. self.TODO_FILENAME .. "' does not exist.")
         print("That file needs to be created before task much will work properly.")
 
-        print("Do you want to create it? Y/n.")
+        print("Do you want to create it? [Y/n].")
         local choice = io.read()
 
         if choice == 'Y' then

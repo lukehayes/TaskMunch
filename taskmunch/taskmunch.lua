@@ -69,7 +69,18 @@ function Taskmunch:add_task(task_str, priority)
 end
 
 function Taskmunch:clear()
-    self.file:clear()
+
+    FM.new_line()
+    FM.text("Are you sure you want to clear the todolist? [Y/n].")
+    FM.text("...")
+    local choice = io.read()
+
+    if choice == 'Y' then
+        self.file:clear()
+        print("Todolist cleared!...")
+    else
+        os.exit()
+    end
 end
 
 --- Count the number of tasks inside the list.
