@@ -6,9 +6,10 @@ local flag     = arg[1]
 local task_str = arg[2]
 local priority = arg[3]
 
+-- Needs to be run first - its checks to see if tm.txt exists.
+CFG:init()
 taskmunch = TM:new()
 
-CFG:init()
 
 if flag == nil then
     taskmunch:printHelp()
