@@ -6,6 +6,11 @@ function Format.new_line()
     io.write("\n")
 end
 
+function Format.flag(flag, description)
+    io.write(flag .. " - " .. description .." \n")
+    Format.new_line()
+end
+
 --- Print a line of length N with '-' character.
 --  
 --  @param number    The length of the line - defaults to 80
@@ -28,7 +33,7 @@ end
 --  @param string    The string to print
 --  @param number    The padding on the left side of the text.
 function Format.text(str, padding)
-    local padding = padding or (40 -#str)
+    local padding = padding or 0
 
     for i=1,padding do
         io.write(" ")
