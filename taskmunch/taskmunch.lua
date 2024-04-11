@@ -2,12 +2,14 @@
 
 local CFG  = require('taskmunch.config')
 local Task = require('taskmunch.task')
+local File = require('taskmunch.file')
 
 local Taskmunch = {}
 
 function Taskmunch:new()
     local tm = setmetatable({}, {__index = Taskmunch})
 
+    tm.file = File:new(CFG.TODO_FILENAME)
     tm.task_count = 0
 
     return tm
@@ -16,7 +18,7 @@ end
 function Taskmunch:print()
 
     local lines= io.lines(CFG.TODO_FILENAME)
-    local task_count = self:task_count()
+    local task_count = self.task_count
 
     print("----------------------------------------")
     print("Tasks (".. task_count..")")
@@ -31,12 +33,7 @@ function Taskmunch:print()
     print("----------------------------------------")
 end
 
-function Taskmunch:add_task(task_str)
-
-    print(arg[2])
-    print(arg[2])
-    print(arg[2])
-    print(arg[2])
+function Taskmunch:add_task(task_str, priority)
 
     if task_str == nil then
         print(CFG.NO_TASK_TEXT)
@@ -47,10 +44,14 @@ function Taskmunch:add_task(task_str)
             t.priority = priority
         end
 
-        fh:writeTask(t, task_str)
+        self.file:writeTask(t, task_str)
 
         self.task_count = self.task_count + 1
     end
+end
+
+function Taskmunch:clear()
+    self.file:clear()
 end
 
 --- Count the number of tasks inside the list.
