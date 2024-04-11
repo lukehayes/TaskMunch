@@ -36,7 +36,8 @@ function File.not_exist(file)
 end
 
 function File:writeTask(taskObj, task)
-    print(self.filename)
+
+    print("Filename:", self.filename)
     local fh = io.open(self.filename,'a')
 
     fh:write(
