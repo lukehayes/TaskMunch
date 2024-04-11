@@ -64,7 +64,7 @@ function Taskmunch:add_task(task_str, priority)
         self.file:writeTask(t, task_str)
 
         self.task_count = self.task_count + 1
-        print("Count Update", self.task_count)
+        print("New task count: " .. tostring(self.task_count) )
     end
 end
 
