@@ -18,12 +18,19 @@ end
 
 function Taskmunch:printHelp()
     FM.new_line()
-    FM.text("TaskMunch TodoList - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
+    FM.text("TaskMunch - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
     FM.text("Flags:")
     FM.new_line()
-    FM.flag("-a", "Add a new task to the list")
-    FM.flag("-p", "Print all of the items in the list")
+    FM.flag("-a", "Add a new task to the list.")
+    FM.new_line()
+    FM.text("Options:", 5)
+    FM.flagOption(1,"The name of the task", "string", true, 1)
+    FM.flagOption(2,"Priority of the task", "number", false, 1)
+    FM.new_line()
+    FM.flag("-p", "Print all of the items in the list.")
+    FM.new_line()
     FM.flag("-xxx", "Completely wipe the list. This action cannot be undone!")
+    FM.new_line()
 end
 
 function Taskmunch:print()

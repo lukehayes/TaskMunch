@@ -7,8 +7,16 @@ function Format.new_line()
 end
 
 function Format.flag(flag, description)
-    io.write(flag .. " - " .. description .." \n")
-    Format.new_line()
+    io.write(flag .. " : " .. description .." \n")
+end
+
+function Format.flagOption(arg_position, description, data_type, required, default_value)
+
+    if required then
+        Format.text(arg_position .. ": " .. description .. " (" .. data_type .. "). Required.", 10)
+    else
+        Format.text(arg_position .. ": " .. description .. " (" .. data_type .."). Defaults to " .. tostring(default_value), 10)
+    end
 end
 
 --- Print a line of length N with '-' character.
