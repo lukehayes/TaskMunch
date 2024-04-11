@@ -3,6 +3,7 @@
 local CFG  = require('taskmunch.config')
 local Task = require('taskmunch.task')
 local File = require('taskmunch.file')
+local FM   = require('taskmunch.format')
 
 local Taskmunch = {}
 
@@ -13,6 +14,16 @@ function Taskmunch:new()
     tm.task_count = 0
 
     return tm
+end
+
+function Taskmunch:printHelp()
+    FM.new_line()
+    FM.text("TaskMunch TodoList - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
+    FM.text("Flags:")
+    FM.new_line()
+    FM.flag("-a", "Add a new task to the list")
+    FM.flag("-p", "Print all of the items in the list")
+    FM.flag("-xxx", "Completely wipe the list. This action cannot be undone!")
 end
 
 function Taskmunch:print()

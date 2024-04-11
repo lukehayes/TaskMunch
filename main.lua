@@ -11,7 +11,7 @@ taskmunch = TM:new()
 CFG:init()
 
 if flag == nil then
-    print('Run tm -h')
+    taskmunch:printHelp()
 
 elseif flag == '-p' then
 
