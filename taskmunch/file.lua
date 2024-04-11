@@ -37,7 +37,6 @@ end
 
 function File:writeTask(taskObj, task)
 
-    print("Filename:", self.filename)
     local fh = io.open(self.filename,'a')
 
     fh:write(
