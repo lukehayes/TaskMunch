@@ -78,10 +78,14 @@ function Taskmunch:clear()
 
     if choice == 'Y' then
         self.file:clear()
+        FM.new_line()
         FM.text("Todolist cleared!", 0, "green")
+        FM.new_line()
     else
         FM.new_line()
+        FM.new_line()
         FM.text("Todolist has not been deleted.", 0, "yellow")
+        FM.new_line()
         os.exit()
     end
 end
