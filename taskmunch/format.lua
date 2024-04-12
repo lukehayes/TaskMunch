@@ -14,6 +14,11 @@ function Format.flag(flag, description)
     io.write(flag .. " : " .. description .." \n")
 end
 
+function Format.heading(str, char)
+    io.write(str .. "\n")
+    Format.line(str:len(), char)
+end
+
 --- Print an option for a specific flag.
 --
 --  @param string    The option flag.
@@ -23,7 +28,7 @@ function Format.flagOption(arg_position, description, data_type, required, defau
     if required then
         Format.text(arg_position .. ": " .. description .. " (" .. data_type .. "). Required.", 10)
     else
-        Format.text(arg_position .. ": " .. description .. " (" .. data_type .."). Defaults to " .. tostring(default_value), 10)
+        Format.text(arg_position .. ": " .. description .. " (" .. data_type .."). Defaults to " .. tostring(default_value) .. ".", 10)
     end
 end
 

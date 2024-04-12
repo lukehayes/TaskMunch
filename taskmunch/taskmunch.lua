@@ -19,8 +19,7 @@ end
 function Taskmunch:printHelp()
     FM.new_line()
     FM.text("TaskMunch - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
-    FM.text("Flags:")
-    FM.line(6, "=")
+    FM.heading("Flags:")
     FM.new_line()
     FM.flag("-a", "Add a new task to the list.")
     FM.new_line()
@@ -74,6 +73,7 @@ function Taskmunch:clear()
     FM.new_line()
     FM.text("Are you sure you want to clear the todolist? [Y/n].")
     FM.text("...")
+    FM.new_line()
     local choice = io.read()
 
     if choice == 'Y' then
