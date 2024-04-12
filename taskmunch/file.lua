@@ -40,9 +40,9 @@ function File:writeTask(taskObj, task)
     local fh = io.open(self.filename,'a')
 
     fh:write(
-        taskObj.task .. " " ..
-        tostring(taskObj.done).. " " ..
-        tostring(taskObj.priority).. " " ..
+        taskObj.task .. "#" ..
+        tostring(taskObj.done).. "#" ..
+        tostring(taskObj.priority).. "#" ..
         taskObj.created_at .. "\n"
     )
 
@@ -70,7 +70,6 @@ end
 function File:clear()
     local fh = io.open(self.filename, "w+")
     fh:close()
-    print(self.filename .. " cleared!")
 end
 
 

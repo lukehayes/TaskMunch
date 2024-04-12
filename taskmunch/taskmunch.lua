@@ -12,6 +12,7 @@ function Taskmunch:new()
 
     tm.file = File:new(CFG.TODO_FILENAME)
     tm.task_count = tm.file:task_count()
+    tm.tasks = {}
 
     return tm
 end
@@ -43,6 +44,8 @@ end
 
 function Taskmunch:print()
 
+    local tasks = self:build_list()
+
     local lines= io.lines(CFG.TODO_FILENAME)
 
     FM.line(40, "-")
@@ -50,12 +53,53 @@ function Taskmunch:print()
     FM.line(40, "-")
     FM.new_line()
 
-    for line in lines do
-        FM.text(line, 0, "blue")
+    -- @TODO Implement some kind of sorting based on priority etc.
+
+    --[[
+    table.sort(tasks, function(a,b)
+        --return string.len(a.task) < string.len(b.task)
+        return a.priority > b.priority
+    end)
+    ]]
+
+
+
+    -- @TODO Add colors based on priority?
+
+    for _,task in pairs(tasks) do
+
+        io.write(task.task .. " ")
+        io.write(task.priority .. " ")
+        io.write("\n")
+        --FM.text(task.task .. " (p) " .. task.priority)
     end
 
     FM.new_line()
     FM.line(40, "-")
+end
+
+--- Generate a table filled with tasks ready to be printed.
+--
+-- @return table
+function Taskmunch:build_list()
+    local lines= io.lines(CFG.TODO_FILENAME)
+    local tasks = {}
+
+    for line in lines do
+        local pattern = '[^#]+'
+        local match = line:gmatch(pattern)
+
+        local task      = match()
+        local done      = match()
+        local priority  = match()
+        local timestamp = match()
+
+        local t = Task:new(task, done, priority)
+
+        table.insert(tasks, t)
+    end
+
+    return tasks
 end
 
 function Taskmunch:add_task(task_str, priority)
