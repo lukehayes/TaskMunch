@@ -37,17 +37,17 @@ function Taskmunch:print()
 
     local lines= io.lines(CFG.TODO_FILENAME)
 
-    print("----------------------------------------")
-    print("Tasks (".. self.task_count ..")")
-    print("----------------------------------------")
-    print()
+    FM.line(40, "-")
+    FM.text("Tasks (".. self.task_count ..")")
+    FM.line(40, "-")
+    FM.new_line()
 
     for line in lines do
-        print(line)
+        FM.text(line, 0, "blue")
     end
 
-    print()
-    print("----------------------------------------")
+    FM.new_line()
+    FM.line(40, "-")
 end
 
 function Taskmunch:add_task(task_str, priority)
