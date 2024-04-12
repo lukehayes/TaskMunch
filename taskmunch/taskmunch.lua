@@ -17,8 +17,16 @@ function Taskmunch:new()
 end
 
 function Taskmunch:printHelp()
+
+    local title = [[
+▀█▀ ▄▀█ █▀ █▄▀ █▀▄▀█ █░█ █▄░█ █▀▀ █░█
+░█░ █▀█ ▄█ █░█ █░▀░█ █▄█ █░▀█ █▄▄ █▀█
+    ]]
+
+
     FM.new_line()
-    FM.text("TaskMunch - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
+    --FM.text("TaskMunch - v" .. tostring(CFG.TASKMUNCH_VERSION) .. " \n")
+    FM.text(title)
     FM.heading("Flags:")
     FM.new_line()
     FM.flag("-a", "Add a new task to the list.")
