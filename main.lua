@@ -11,6 +11,8 @@ CFG:init()
 taskmunch = TM:new()
 
 
+-- @TODO Add additional flags for sorting etc.
+
 if flag == nil then
     taskmunch:printHelp()
 
