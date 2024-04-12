@@ -1,14 +1,14 @@
 local Task = {}
 
-function Task:new(task)
+function Task:new(task, done, priority)
     local t = setmetatable({},  {
         __index = Task
     })
 
     t.task       = task
-    t.done       = false
+    t.done       = done or false
+    t.priority   = priority or 1 -- Default priorty of a task is 1.
     t.created_at = tostring(os.time())
-    t.priority   = 1 -- Default priorty of a task is 1.
 
     return t
 end
