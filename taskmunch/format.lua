@@ -1,9 +1,19 @@
 --- Simple CLI formatting library for creating borders and titles etc.
 
+local colors = require('ansicolors')
+
 local Format = {}
 
+function Format._write(str, color)
+    local color = color or "green"
+    io.write(colors('%{' .. color  ..  '}' .. str))
+end
+
+--- Print a new line character to stdout.
+--
+-- @return void
 function Format.new_line()
-    io.write("\n")
+    Format._write("\n")
 end
 
 --- Print an app flag.
@@ -11,11 +21,11 @@ end
 --  @param string    The option flag.
 --  @param string    The description of what the flag does.
 function Format.flag(flag, description)
-    io.write(flag .. " : " .. description .." \n")
+    Format._write(flag .. " : " .. description .." \n")
 end
 
 function Format.heading(str, char)
-    io.write(str .. "\n")
+    Format._write(str .. "\n")
     Format.line(str:len(), char)
 end
 
@@ -42,7 +52,7 @@ function Format.line(length, char)
     local length = length or 80
 
     for i=1,length do
-        io.write(char)
+        Format._write(char)
     end
 
     Format.new_line()
@@ -53,14 +63,15 @@ end
 --  
 --  @param string    The string to print
 --  @param number    The padding on the left side of the text.
-function Format.text(str, padding)
+function Format.text(str, padding, color)
+
     local padding = padding or 0
 
     for i=1,padding do
-        io.write(" ")
+        Format._write(" ")
     end
 
-    io.write(str)
+    Format._write(str, color)
     Format.new_line()
 end
 

@@ -71,15 +71,17 @@ end
 function Taskmunch:clear()
 
     FM.new_line()
-    FM.text("Are you sure you want to clear the todolist? [Y/n].")
-    FM.text("...")
+    FM.text("Are you sure you want to clear the todolist? [Y/n].", 0, "yellow")
+    FM.text("...", 0, "yellow")
     FM.new_line()
     local choice = io.read()
 
     if choice == 'Y' then
         self.file:clear()
-        print("Todolist cleared!...")
+        FM.text("Todolist cleared!", 0, "green")
     else
+        FM.new_line()
+        FM.text("Todolist has not been deleted.", 0, "yellow")
         os.exit()
     end
 end
