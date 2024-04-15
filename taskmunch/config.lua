@@ -1,4 +1,5 @@
 local File = require('taskmunch.file')
+local FM   = require('taskmunch.format')
 
 local Config = {
     TODO_FILENAME = "tm.txt",
@@ -9,22 +10,25 @@ Config.__index = Config
 
 function Config:init()
     if File.not_exist(self.TODO_FILENAME) then
-        print()
-        print("'" .. self.TODO_FILENAME .. "' does not exist.")
-        print("That file needs to be created before task much will work properly.")
 
-        print("Do you want to create it? [Y/n].")
+        FM.new_line()
+        FM.text("The file '" .. self.TODO_FILENAME .. "' does not exist and needs to be created before Taskmunch will work", 0, 'red')
+        FM.new_line()
+        FM.text("Do you want to create it? [Y/n].", 0, 'yellow')
+
         local choice = io.read()
 
         if choice == 'Y' then
             os.execute("touch " .. Config.TODO_FILENAME)
-            print(Config.TODO_FILENAME .. " created.")
+            FM.new_line()
+            FM.text('The file ' .. Config.TODO_FILENAME .. " has been created!", 0, 'green')
         else
-            print("Closing...")
+            FM.new_line()
+            FM.text("Closing...",0, 'red')
             os.exit()
         end
 
-        print()
+        FM.new_line()
         os.exit()
     end
 end
