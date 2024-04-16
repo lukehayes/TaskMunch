@@ -1,3 +1,5 @@
+#!/bin/lua
+
 local File = require('taskmunch.file')
 local CFG  = require('taskmunch.config')
 local TM   = require('taskmunch.taskmunch')
